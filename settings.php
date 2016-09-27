@@ -57,6 +57,7 @@ function vcfj_select_jquery_core_version(  ) {
   }
 	?>
 	<select name='vcfj_settings[vcfj_core_version]'>
+    <option value='3.1.1' name='vcfj_settings[vcfj_core_version]' <?php selected( $vcfj_core_version, '3.1.1' ); ?>>jQuery Core 3.1.1</option>
 		<option value='3.1.0' name='vcfj_settings[vcfj_core_version]' <?php selected( $vcfj_core_version, '3.1.0' ); ?>>jQuery Core 3.1.0</option>
 		<option value='3.0.0' name='vcfj_settings[vcfj_core_version]' <?php selected( $vcfj_core_version, '3.0.0' ); ?>>jQuery Core 3.0.0</option>
 		<option value='2.2.4' name='vcfj_settings[vcfj_core_version]' <?php selected( $vcfj_core_version, '2.2.4' ); ?>>jQuery Core 2.2.4</option>
@@ -181,7 +182,7 @@ function vcfj_jquery_core_version() {
   if( isset($options['vcfj_core_version']) && !empty($options['vcfj_core_version']) ){
     $vcfj_core_version = $options['vcfj_core_version'];
   } else {
-    $vcfj_core_version = '3.1.0';
+    $vcfj_core_version = '3.1.1';
   }
 
   // Register new jQuery and jQuery Migrate
