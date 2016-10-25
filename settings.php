@@ -8,45 +8,45 @@ add_action( 'admin_menu', 'vcfj_add_admin_menu' );
 add_action( 'admin_init', 'vcfj_settings_init' );
 
 
-function vcfj_add_admin_menu(  ) { 
+function vcfj_add_admin_menu(  ) {
 
 	add_options_page( 'Version Control for jQuery', 'Version Control for jQuery', 'manage_options', 'version_control_for_jquery', 'vcfj_options_page' );
 
 }
 
 
-function vcfj_settings_init(  ) { 
+function vcfj_settings_init(  ) {
 
 	register_setting( 'vcfj_settings_page', 'vcfj_settings' );
 
 	add_settings_section(
-		'vcfj_pluginPage_section', 
-		'', 
+		'vcfj_pluginPage_section',
+		'',
 		'vcfj_settings_section_callback',
 		'vcfj_settings_page'
 	);
 
-	add_settings_field( 
-		'vcfj_core_version', 
-		__( 'Select your desired jQuery version.', 'version-control-for-jquery' ), 
-		'vcfj_select_jquery_core_version', 
+	add_settings_field(
+		'vcfj_core_version',
+		__( 'Select your desired jQuery version.', 'version-control-for-jquery' ),
+		'vcfj_select_jquery_core_version',
 		'vcfj_settings_page',
-		'vcfj_pluginPage_section' 
+		'vcfj_pluginPage_section'
 	);
 
-		add_settings_field( 
-		'vcfj_migrate_version', 
-		__( 'Select your desired jQuery Migrate version.', 'version-control-for-jquery' ), 
-		'vcfj_select_jquery_migrate_version', 
+		add_settings_field(
+		'vcfj_migrate_version',
+		__( 'Select your desired jQuery Migrate version.', 'version-control-for-jquery' ),
+		'vcfj_select_jquery_migrate_version',
 		'vcfj_settings_page',
-		'vcfj_pluginPage_section' 
+		'vcfj_pluginPage_section'
 	);
 
 
 }
 
 
-function vcfj_select_jquery_core_version(  ) { 
+function vcfj_select_jquery_core_version(  ) {
 
 	$options = get_option( 'vcfj_settings' );
 
@@ -124,7 +124,7 @@ function vcfj_select_jquery_core_version(  ) {
 
 }
 
-function vcfj_select_jquery_migrate_version(  ) { 
+function vcfj_select_jquery_migrate_version(  ) {
 
 	$options = get_option( 'vcfj_settings' );
 
@@ -150,11 +150,11 @@ function vcfj_select_jquery_migrate_version(  ) {
 
 }
 
-function vcfj_settings_section_callback(  ) { 
+function vcfj_settings_section_callback(  ) {
 	echo '<p>' . __( 'Use the dropdown selectors below to select your desired version of jQuery. Please note that the plugin defaults to the latest stable version.', 'version-control-for-jquery' ) . '</p>';
 }
 
-function vcfj_options_page(  ) { 
+function vcfj_options_page(  ) {
 
 	?>
   <div class="wrap">
@@ -186,7 +186,7 @@ function vcfj_jquery_core_version() {
   }
 
   // Register new jQuery and jQuery Migrate
-  wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-' . $vcfj_core_version . '.min.js', false, $vcfj_core_version );
+  wp_register_script( 'jquery', 'https://code.jquery.com/jquery-' . $vcfj_core_version . '.min.js', false, $vcfj_core_version );
 }
 // Enqueue new core jQuery
 add_action('wp_enqueue_scripts', 'vcfj_jquery_core_version');
@@ -206,7 +206,7 @@ function vcfj_jquery_migrate_version() {
     $vcfj_migrate_version = '3.0.0';
   }
 
-  wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-' . $vcfj_migrate_version . '.min.js', array( 'jquery' ), $vcfj_migrate_version );
+  wp_register_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-' . $vcfj_migrate_version . '.min.js', array( 'jquery' ), $vcfj_migrate_version );
 }
 // Enqueue new jQuery Migrate
 add_action('wp_enqueue_scripts', 'vcfj_jquery_migrate_version');
