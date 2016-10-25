@@ -22,4 +22,4 @@ function vcfj_load_plugin_textdomain() {
 add_action( 'plugins_loaded', 'vcfj_load_plugin_textdomain' );
 
 // Include the settings page
-include_once( 'settings.php');
+include_once( plugin_dir_path( __FILE__ ) . 'settings.php');
