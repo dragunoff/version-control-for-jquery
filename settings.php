@@ -186,7 +186,7 @@ function vcfj_jquery_core_version() {
   }
 
   // Register new jQuery and jQuery Migrate
-  wp_enqueue_script( 'jquery', 'https://code.jquery.com/jquery-' . $vcfj_core_version . '.min.js', false, $vcfj_core_version );
+  wp_register_script( 'jquery', 'https://code.jquery.com/jquery-' . $vcfj_core_version . '.min.js', false, $vcfj_core_version );
 }
 // Enqueue new core jQuery
 add_action('wp_enqueue_scripts', 'vcfj_jquery_core_version');
@@ -206,7 +206,7 @@ function vcfj_jquery_migrate_version() {
     $vcfj_migrate_version = '3.0.0';
   }
 
-  wp_enqueue_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-' . $vcfj_migrate_version . '.min.js', array( 'jquery' ), $vcfj_migrate_version );
+  wp_register_script( 'jquery-migrate', 'https://code.jquery.com/jquery-migrate-' . $vcfj_migrate_version . '.min.js', array( 'jquery' ), $vcfj_migrate_version );
 }
 // Enqueue new jQuery Migrate
 add_action('wp_enqueue_scripts', 'vcfj_jquery_migrate_version');
